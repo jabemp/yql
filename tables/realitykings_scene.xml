@@ -48,11 +48,11 @@
 
 					responseXML.id += <id>{posterdata.split('/').pop().match(/^[^-]+/)[0]}</id>;
 					//mmddyy
-					try{
+					/*try{
 					var releasedate = posterdata.split('/').pop().match(/\d{6}/)[0].match(/\d{1,2}/g);
 					var date = new Date('20' + releasedate[2], releasedate[0]-1, releasedate[1]);
 					responseXML.dateiso += <dateiso>{date.toISOString().substring(0,10)}</dateiso>;
-					} catch(e) { y.log('date: ' + e); }
+					} catch(e) { y.log('date: ' + e); }*/
 					
 					responseXML.thumbs += <thumbs></thumbs>;
 					responseXML.images += <images></images>;
