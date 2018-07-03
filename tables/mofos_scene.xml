@@ -53,7 +53,11 @@
 						//old: 'https://i1.mfspics.com/scenes/' + sceneid + '/768x432.jpg';
 						responseXML.poster += <poster>{poster}</poster>;
 					} catch(e) { y.log('poster: ' + e); }
-					
+
+					for(i=1;i < 6;i++) {
+						var imglink = 'https://static-ht.mofoscontent.com/scenes/' + sceneid + '/s1256x707_' + i.toString() + '.jpg';
+						responseXML.images.image += <image>{imglink}</image>;
+					}
 					try {
 					    var models = y.xpath(scenedata,"//a[contains(@href,'/tour/girl')]");
 				    
