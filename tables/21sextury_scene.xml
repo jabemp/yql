@@ -45,19 +45,6 @@
 						responseXML.poster += <poster>{scenedata..script.toString().match(/https:.[^"]+jpg/).toString().replace(/\\/g,"")}</poster>;
 					} catch(e) { y.log('poster: ' + e);}
 					
-					try {
-						var releasedatetemp = scenedata..div.(@class == "updatedDate").b;
-						//y.log(releasedatetemp);
-					
-						var releasedate = releasedatetemp.text().toString().trim();
-						//y.log(releasedate);
-						var dateparts = releasedate.split('-');
-						
-						var date = new Date(dateparts[0], dateparts[1]-1, dateparts[2]);
-						
-						responseXML.dateiso = <dateiso>{date.toISOString().substring(0,10)}</dateiso>;
-					} catch(e) { y.log('date: ' + e);}
-					
 					responseXML.thumbs += <thumbs></thumbs>;
 					responseXML.images += <images></images>;
 					
