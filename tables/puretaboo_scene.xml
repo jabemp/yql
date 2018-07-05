@@ -61,7 +61,22 @@
 					responseXML.thumbs += <thumbs></thumbs>;
 					responseXML.images += <images></images>;
 					
-					
+					try {
+						var models = y.xpath(scenedata,"//a[contains(@href,'/pornstar/')]");
+						var castTemp = [];
+						responseXML.models += <models></models>;
+				
+						for each (var a in models) {
+							//y.log(a);
+							model = <model></model>;
+							model.model += <name>{a.span.text().toString().replace(/,/g,'')}</name>;
+							//model.url += <url>{(a.@href.toString().substring(0, 4) == 'http' ? '' : baseurl ) + a.@href}</url>;
+							castTemp.push(a.span.text().toString().replace(/,/g,''));
+							responseXML.models.model += model;
+						}
+						responseXML.cast = <cast>{castTemp.length > 0 ? niceList(castTemp) : "" }</cast>
+					} catch(e) {y.log('models:' + e);}
+
 					try {
 						var tags = y.xpath(scenedata,"//div[@class='sceneCol sceneColCategories']/a");
 				
