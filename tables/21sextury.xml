@@ -3,7 +3,8 @@
    <bindings>
 		<select itemPath="scenes.scene" produces="XML">
 			<inputs>
-			 <key id="site" type="xs:string" paramType="path" required="true"/>
+				<key id="site" type="xs:string" paramType="path" required="true"/>
+				<key id="time" type="xs:string" paramType="path" required="false"/>
 		   </inputs>
 			<execute><![CDATA[
 				var domain = "21sextury.com";
@@ -29,6 +30,10 @@
 
 
 				var url = baseurl + path + 'videos';
+
+				if(time == 'upcoming') {
+					url = url + '/All-Categories/0/All-Pornstars/0/upcoming';
+				}
 				
 				var html = y.rest(url).accept('text/html').get().response;
 				var results = y.tidy(html);
