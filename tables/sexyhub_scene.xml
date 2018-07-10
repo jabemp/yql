@@ -9,7 +9,7 @@
 				var scheme = 'https';
 				var baseurl = scheme + '://www.sexyhub.com';
 				
-				var xpath="//section[@class='paper responsive release-info-container'] | //script[contains(text(),'poster')]"
+				var xpath="//section[@class='paper responsive release-info-container'] | //script[contains(text(),'poster')] | //div[@id ='player']";
 				var results = y.rest(url).accept('text/html').get().response;
 				if (xpath) {
 					results = <results>{y.xpath(results, xpath)}</results>;
@@ -45,7 +45,10 @@
 					try {
 						var poster = scenedata.script.toString().match(/photo.[^"]+jpg/).toString().replace(/\\/g,"");
 						responseXML.poster += <poster>{scheme + '://' + poster}</poster>;
-					} catch(e) {y.log('poster:' + e);}
+					} catch(e) {y.log('poster:' + e);
+						var poster2 = scenedata..div.(@id == 'player').@style.toString().match(/photo.[^\)]+/).toString().replace(/\\/g,"");
+							responseXML.poster += <poster>{scheme + '://' + poster2}</poster>;
+					}
 					
 					try {
 						var releasedate = scenedata.section.article.p.time.text().toString();
