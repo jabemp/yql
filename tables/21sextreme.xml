@@ -3,22 +3,21 @@
    <bindings>
 		<select itemPath="scenes.scene" produces="XML">
 			<inputs>
-			 <key id="site" type="xs:string" paramType="path" required="true"/>
+				<key id="site" type="xs:string" paramType="path" required="false"/>
+			 	<key id="time" type="xs:string" paramType="path" required="false"/>
 		   </inputs>
 			<execute><![CDATA[
-				var domain = "21sextury.com";
+				var domain = "21sextreme.com";
 				var path = "/en/";
-				var patt = /(teachmefisting|oldyounglesbianlove|zoliboy|grandpasfuckteens|lustygrandmas)/gi;
-				var patt2 = /^21/i;
-				if (patt.test(site)) {
-					domain = "21sextreme.com";
-				}
-				
 				var baseurl = 'https://www.' + domain;
 				
 				var xpath = '//div[contains(@class,"tlcItem playlistable_scenes")]/div[@class="tlcDetails"]';
 				
 				var url = baseurl + path + 'videos';
+				
+				if(time == 'upcoming') {
+					url = url + '/upcoming/1/categoryName/0/Pornstar/0';
+				}
 				
 				var html = y.rest(url).accept('text/html').get().response;
 				var results = y.tidy(html);
