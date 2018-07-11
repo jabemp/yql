@@ -77,7 +77,7 @@
 					
 					
 					try {
-						var tags = y.xpath(scenedata,"//div[@class='sceneCol sceneColCategories']/a");
+						var tags = y.xpath(scenedata,"//div[@class='sceneCategories']/a");
 				
 						var tagsTemp = [];
 				
@@ -87,14 +87,8 @@
 					responseXML.tags += <tags>{tagsTemp.join(', ')}</tags>;
 					} catch(e) {y.log('tags:' + e);}
 					
-					/*try {
-						var description = scenedata..div.(@class == 'sceneDesc bioToRight showMore').*.text().toString();
-					responseXML.description += <desc>{description.replace(/[^\x00-\x7F]/g, ' ').replace(/\s+/g, ' ')}</desc>;
-					
-					} catch(e) {y.log('desc');}*/
-					
 					try {
-						var descNode = y.xpath(scenedata,"//div[@class='sceneDesc bioToRight showMore']");
+						var descNode = y.xpath(scenedata,"//div[@class='sceneDescText']");
 						var description = "";
 						i = 0;
 						for each(var child in descNode.*) {
