@@ -63,7 +63,7 @@
 				function processScene(scenedata) {
 					var scene = <scene></scene>;
 					
-					var scenelink = scenedata.a;
+					var scenelink = scenedata.a[0];
 					//y.log(scenedata);
 					try {
 						var sceneurl = scenelink.@href.toString();
