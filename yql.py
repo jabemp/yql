@@ -44,3 +44,7 @@ def main():
     y = YQL()
     query = y.prepare_yql_statement('<tablename>.xml', 'date = "<yy.mm.dd>"')
     y.run_yql_statement(query)
+
+
+if __name__ == "__main__":
+    main()
